@@ -16,13 +16,16 @@ const updateJsonFile = async (filename, entries) => {
   
   if (!fs.existsSync(seasonFilePath)) await initializeSeasonFile(year);
 
+  const risks = entries.map((item) => item.risk);
+  const maxRisk = risks.length > 0 ? Math.max(...risks) : -1;
+
   const content = {
     date: date,
     entries: entries,
+    maxRisk: maxRisk,
   };
 
   let existingData = [];
-
 
   const fileData = fs.readFileSync(seasonFilePath, "utf8");
   if (fileData) {

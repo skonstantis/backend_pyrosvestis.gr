@@ -7,8 +7,8 @@ const analyzeReadyDateImage = require("./analyzeReadyDateImage");
 const findAreas = require("./findAreas");
 const readyDates = require("../arrays/readyDates");
 const errorLogger = require("./errorLogger");
+const publishChangesToGithub = require("./publishChangesToGithub");
 const dataDir = require("../constants/dataDir");
-const { exec } = require("child_process");
 const { exit } = require("process");
 
 async function tryToday() {
@@ -17,7 +17,7 @@ async function tryToday() {
     Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
   );
 
-  date.setDate(date.getDate() + 1);
+  date.setDate(date.getDate());
 
   const month = date.getUTCMonth();
 
@@ -64,34 +64,6 @@ async function tryToday() {
     }
     console.error(error);
   }
-}
-
-async function publishChangesToGithub(directory) {
-  return new Promise((resolve, reject) => {
-    exec(`cd ${directory} && git add .`, (err, stdout, stderr) => {
-      if (err) {
-        console.error(`Error adding changes: ${stderr}`);
-        reject(err);
-        return;
-      }
-      exec(`cd ${directory} && git commit -m "Automated commit of dataDir changes"`, (err, stdout, stderr) => {
-        if (err) {
-          console.error(`Error committing changes: ${stderr}`);
-          reject(err);
-          return;
-        }
-        exec(`cd ${directory} && git push`, (err, stdout, stderr) => {
-          if (err) {
-            console.error(`Error pushing changes: ${stderr}`);
-            reject(err);
-            return;
-          }
-          console.log("Changes pushed to GitHub successfully.");
-          resolve(true);
-        });
-      });
-    });
-  });
 }
 
 module.exports = tryToday;

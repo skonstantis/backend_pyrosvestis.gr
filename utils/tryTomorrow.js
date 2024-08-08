@@ -17,7 +17,7 @@ async function tryToday() {
     Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
   );
 
-  date.setDate(date.getDate());
+  date.setDate(date.getDate() + 1);
 
   const month = date.getUTCMonth();
 

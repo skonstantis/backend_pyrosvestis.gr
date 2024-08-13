@@ -11,8 +11,11 @@
   "dependencies": {
     "async-lock": "^1.4.1",
     "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
     "jimp": "^0.22.12",
-    "sharp": "^0.33.4"
+    "jsdom": "^24.1.1",
+    "sharp": "^0.33.4",
+    "twitter-api-v2": "^1.17.2"
   },
   "devDependencies": {
     "@types/async-lock": "^1.4.2"

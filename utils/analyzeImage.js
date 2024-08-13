@@ -5,7 +5,7 @@ const updateJsonFiles = require("./updateJsonFiles");
 
 const analyzeImage = async (filepath, filename, areas) => {
   try {
-    const entries = await analyzeImageData(filepath, areas);
+    const entries = await analyzeImageData(filepath, areas, filename);
     await updateJsonFiles(filename, entries);
     console.log(`IMAGE ANALYZED`);
   } catch (error) {

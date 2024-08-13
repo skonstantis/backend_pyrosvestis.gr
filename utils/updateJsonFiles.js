@@ -1,5 +1,4 @@
 /* Author: Sotiris Konstantis */
-/* Author: Sotiris Konstantis */
 
 const fs = require("fs");
 const path = require("path");

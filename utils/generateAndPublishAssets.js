@@ -158,8 +158,8 @@ async function generateAndPublishAssets(locationId, levelId, date) {
     (new Types().items.get(new Locations().items.get(locationId).type) == "Δασαρχείο" ? " στο " : " στην ") +
     new Types().items.get(new Locations().items.get(locationId).type) +
     " " +
-    new Locations().items.get(locationId).name + ".\n\nΓια περισσότερες πληροφορίες, pyrosvestis.netlify.app\n\n"  +
-    "(Δοκιμαστική λειτουργία)\n\n#πυρκαγιά #φωτιά";
+    new Locations().items.get(locationId).name + ".\n\nΓια περισσότερες πληροφορίες, pyrosvestis.gr\n\n"  +
+    "\n\n#πυρκαγιά #φωτιά";
 
     if(levelId >= 4)
       await tweetWithImage(filePath + pngFileName, tweetText);
